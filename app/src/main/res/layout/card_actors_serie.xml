@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="130dp"
+    android:layout_height="210dp"
+    android:layout_marginBottom="10dp"
+    android:gravity="center"
+    android:orientation="vertical">
+    <ImageView
+        android:id="@+id/image_actor_serie"
+        android:layout_width="115dp"
+        android:layout_height="150dp"
+        android:contentDescription="Imagen actor"
+        android:src="@android:drawable/ic_menu_gallery"/>
+    <TextView
+        android:id="@+id/name_actor_serie"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="14sp"
+        android:layout_marginTop="5dp"
+        android:text="Nombre actor"/>
+    <TextView
+        android:id="@+id/role_actor_serie"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="12sp"
+        android:layout_marginTop="5dp"
+        android:text="Personaje"/>
+
+</LinearLayout>

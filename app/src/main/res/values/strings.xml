@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Series</string>
+    <string name="melon">melón</string>
+    <string name="medio">medio</string>
+    <string name="entrar">Entrar</string>
+    <string name="wrong_username_password">Error en el usuario o contraseña</string>
+    <string name="name_movie">Nombre de pelicula</string>
+    <string name="no_banner">No contiene imagen</string>
+    <string name="enter_text">Ingresa un texto</string>
+    <string name="name_serie">Nombre de la serie</string>
+    <string name="divider_rating">/10</string>
+    <string name="not_found">No se encontró una serie con el nombre de </string>
+</resources>
