@@ -165,7 +165,12 @@ public class SerieDetailsActivity extends AppCompatActivity implements IListener
                                             Log.d(TAG, "Response serieDescription: " + gson.toJson(response.body()));
                                             serieDescription = response.body();
 
-                                            numberSeason = Integer.parseInt(serieDescription.getTotalSeasons());
+                                            if(serieDescription.getTotalSeasons().equals("N/A") || serieDescription.getTotalSeasons() == null){
+                                                numberSeason = 0;
+                                            }else{
+                                                numberSeason = Integer.parseInt(serieDescription.getTotalSeasons());
+                                            }
+
                                             if (!getLoading()) {
                                                 args.putSerializable("description", gson.toJson(serieDescription));
                                                 DetailsFragment detailsFragment = new DetailsFragment();

@@ -1,6 +1,7 @@
 package com.example.series.adapter;
 
 import android.content.Context;
+import android.content.res.Resources;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -8,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.series.R;
 import com.example.series.api.data.Episode;
@@ -26,6 +28,7 @@ public class EpisodeSerieAdapter extends RecyclerView.Adapter<EpisodeSerieAdapte
     private Context ctx;
     private String URL = Constants.URL_BANNER;
     private String URL_COMPLETE;
+    private String overViewMore;
 
     public EpisodeSerieAdapter(List<Episode> data, Context ctx) {
         this.data = data;
@@ -53,7 +56,23 @@ public class EpisodeSerieAdapter extends RecyclerView.Adapter<EpisodeSerieAdapte
 
         }
         vh.chapterEpisode.setText(episode.getEpisodeName()==null || episode.getEpisodeName().isEmpty() ? "No disponible" : episode.getEpisodeName());
-        vh.overviewEpisode.setText(episode.getOverview()==null || episode.getOverview().isEmpty() ? "No disponible" : episode.getOverview());
+
+        if(episode.getOverview()==null || episode.getOverview().isEmpty()){
+            vh.overviewEpisode.setText(Resources.getSystem().getString(R.string.not_found));
+        }else{
+            if(episode.getOverview().length()>150){
+                overViewMore = episode.getOverview().substring(0,150) + "... Seguir leyendo";
+                vh.overviewEpisode.setText(overViewMore);
+                vh.overviewEpisode.setOnClickListener(view ->  {
+                    Toast.makeText(ctx,"Dio click",Toast.LENGTH_SHORT).show();
+                });
+            }else{
+                vh.overviewEpisode.setText(episode.getOverview());
+            }
+
+        }
+
+
         vh.firstAiredEpisode.setText(episode.getFirstAired());
         vh.ratingEpisode.setText(episode.getSiteRating());
     }

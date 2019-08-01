@@ -14,6 +14,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.series.R;
@@ -49,6 +50,8 @@ public class SerieSearchActivity extends AppCompatActivity {
     ImageView btnSeriesSearch;
     @BindView(R.id.btn_delete_text)
     ImageView btnDeleteText;
+    @BindView(R.id.txt_series_notFound)
+    TextView txtSeriesNotFound;
     @BindView(R.id.recycler_view_series)
     RecyclerView recyclerView;
     @BindView(R.id.rotateloading_series)
@@ -92,16 +95,16 @@ public class SerieSearchActivity extends AppCompatActivity {
 
     @OnClick(R.id.btn_search_series)
     public void searchSeries() {
-
-        activateRotateloading();
-        mDataSeries.clear();
-
         String name = edtSearchSeries.getText().toString();
         if (name.isEmpty()) {
             Toast.makeText(this, R.string.enter_text, Toast.LENGTH_SHORT).show();
         } else {
+            activateRotateloading();
+            mDataSeries.clear();
             btnSeriesSearch.setVisibility(View.GONE);
             btnDeleteText.setVisibility(View.VISIBLE);
+            txtSeriesNotFound.setText("");
+            txtSeriesNotFound.setVisibility(View.GONE);
             getToken();
             SerieService serieService = ServiceFactory.createSerieService();
             Call<SerieList> seriesCall = serieService.getSeries("Bearer " + token, name);
@@ -130,8 +133,8 @@ public class SerieSearchActivity extends AppCompatActivity {
                     } else {
                         if (response.code() == 404){
                             notFound = getString(R.string.not_found) + name;
-                            edtSearchSeries.setText("");
-                            edtSearchSeries.setText(notFound);
+                            txtSeriesNotFound.setVisibility(View.VISIBLE);
+                            txtSeriesNotFound.setText(notFound);
                         }
                         Log.e(TAG, "Error en algún parámetro al buscar las series");
                     }
@@ -159,8 +162,10 @@ public class SerieSearchActivity extends AppCompatActivity {
 
     @OnClick(R.id.btn_delete_text)
     public void deleteText() {
-        btnDeleteText.setVisibility(View.GONE);
         btnSeriesSearch.setVisibility(View.VISIBLE);
+        btnDeleteText.setVisibility(View.GONE);
+        txtSeriesNotFound.setText("");
+        txtSeriesNotFound.setVisibility(View.GONE);
         edtSearchSeries.setText("");
         mDataSeries.clear();
         serieDetailsAdapter.notifyDataSetChanged();

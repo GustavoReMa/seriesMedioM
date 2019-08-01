@@ -58,6 +58,7 @@ public class DetailsFragment extends Fragment {
         txtTotalSeasons = view.findViewById(R.id.total_seasons_description_details_serie);
         txtOverviewDescription = view.findViewById(R.id.overview_details_serie);
         txtRatingDescription = view.findViewById(R.id.rating_description_details_serie);
+        clearView();
 
         if (args != null) {
 
@@ -84,6 +85,16 @@ public class DetailsFragment extends Fragment {
 
         }
         return view;
-
     }
+
+    void clearView(){
+        txtGenreDescription.setText("");
+        txtFirstAiredDescription.setText("");
+        txtAirsTimeDescription.setText("");
+        txtAirsDay.setText("");
+        txtTotalSeasons.setText("");
+        txtOverviewDescription.setText("");
+        txtRatingDescription.setText("");
+    }
+
 }
