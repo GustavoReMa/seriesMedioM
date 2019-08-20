@@ -56,7 +56,7 @@ public class DetailsFragment extends Fragment {
         txtAirsTimeDescription = view.findViewById(R.id.airstime_description_details_serie);
         txtAirsDay = view.findViewById(R.id.airsday_description_details_serie);
         txtTotalSeasons = view.findViewById(R.id.total_seasons_description_details_serie);
-        txtOverviewDescription = view.findViewById(R.id.overview_details_serie);
+        txtOverviewDescription = view.findViewById(R.id.overview_description_details_serie);
         txtRatingDescription = view.findViewById(R.id.rating_description_details_serie);
         clearView();
 

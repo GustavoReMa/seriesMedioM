@@ -59,12 +59,9 @@ public class MainActivity extends AppCompatActivity {
                     Gson gson = new Gson();
                     Log.d(TAG, "Response token: " + gson.toJson(Objects.requireNonNull(userToken).token));
                     String token = gson.toJson(userToken.token);
-                    Log.d(TAG,"Token con comillas: " + token);
                     token = token.substring(1,token.length()-1);
-                    Log.d(TAG,"Token sin comillas: " + token);
 
                     SharedPreferences sharedPreferences = getSharedPreferences(Constants.NAME_PREFS, Activity.MODE_PRIVATE);
-                    //sharedPreferences.edit().putString(Constants.PREFS_KEY_TOKEN, gson.toJson(userToken.token)).apply();
                     sharedPreferences.edit().putString(Constants.PREFS_KEY_TOKEN, token).apply();
                     Intent intent = new Intent(MainActivity.this, SerieSearchActivity.class);
                     startActivity(intent);

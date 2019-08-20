@@ -16,7 +16,6 @@ import android.widget.TextView;
 import com.example.series.R;
 import com.example.series.adapter.EpisodeSerieAdapter;
 import com.example.series.adapter.NumberSeasonAdapter;
-import com.example.series.api.data.Episode;
 import com.example.series.api.data.EpisodeList;
 import com.example.series.api.data.NumberSeason;
 import com.example.series.interfaces.IListenerClick;

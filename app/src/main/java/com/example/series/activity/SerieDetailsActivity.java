@@ -77,10 +77,10 @@ public class SerieDetailsActivity extends AppCompatActivity implements IListener
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_series_details_main);
         ButterKnife.bind(this);
-        seriesName = findViewById(R.id.name_serie_tab1);
-
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        seriesName = findViewById(R.id.name_serie_tab1);
 
         btnBack.setVisibility(View.VISIBLE);
         melonLeft.setVisibility(View.GONE);

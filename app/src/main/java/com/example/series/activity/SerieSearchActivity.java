@@ -129,7 +129,6 @@ public class SerieSearchActivity extends AppCompatActivity {
                         }
                         //Log.d(TAG, "Response: " + gson.toJson(response.body().getData()));
 
-
                     } else {
                         if (response.code() == 404){
                             notFound = getString(R.string.not_found) + name;
